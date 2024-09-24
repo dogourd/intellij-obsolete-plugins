@@ -14,10 +14,16 @@ java.sourceSets["main"].java {
     srcDir("src/main/gen")
 }
 
+tasks.jar {
+    from("src/main/java") {
+        include("**/*.conf", "**/*.xml", "**/*.properties")
+    }
+}
+
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2023.1.1")
+    version.set("2024.2.2")
     type.set("IU")
 
     plugins.set(listOf(
@@ -36,7 +42,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("231")
-        untilBuild.set("232.*")
+        untilBuild.set("242.*")
     }
 
     signPlugin {
